@@ -64,3 +64,7 @@ fi
 #rm -rf /root/ssds
 #rm -rf /root/hdds
 nmcli con show
+
+read -p "hostname:" hostname
+echo "$(cat /root/ip4) $hostname.localdomain $hostname" >> /etc/hosts
+hostnamectl set-hostname $hostname
