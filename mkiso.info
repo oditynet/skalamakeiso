@@ -1,0 +1,4 @@
+genisoimage -U -r -v -T -J -joliet-long -V "rvirt-iso-7.0.13-31" -volset "rvirt-iso-7.0.13-31" -A "rvirt-iso-7.0.13-31" -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot -o ../rvirt13.iso .
+genisgenisoimage -U -r -v -T -J -joliet-long -V "RVIRT-ISO-7" -volset "RVIRT-ISO-7" -A "RVIRT-ISO-7" -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot -o ../rvirt13v2-sda.iso .
+
+rm ../rvirt13v3-tmp1.iso ; genisoimage -U -r -v -T -J -joliet-long -V "RVIRT-ISO-7" -volset "RVIRT-ISO-7" -A "RVIRT-ISO-7" -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -eltorito-boot images/efiboot.img -no-emul-boot -o ../rvirt13v2-tmp1.iso .
