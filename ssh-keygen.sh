@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "Run on first node!!!"
+
 count=5
 name="node0"
 ssh-keygen -b 2048 -t rsa -f /root/.ssh/migrate -N ""
