@@ -90,6 +90,3 @@ echo -e "[local]\nname=Local Yum Repo\nbaseurl=file:///media/flash/\nenabled=1\n
 mkdir /media/flash/
 echo '/root/r-virt.iso /media/flash iso9660 noexec,nosuid,nodev,loop     0 0' >> /etc/fstab
 
-mkdir /root/.ssh
-ssh-keygen -b 2048 -t rsa -f /root/.ssh/migrate -N ""
-cat /root/.ssh/migrate.pub >> /root/.ssh/authorized_keys
