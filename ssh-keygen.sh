@@ -13,4 +13,5 @@ done
 for (( i=1; i<= $count; i++ )); do
  echo $name$i
  `scp /root/.ssh/migrat* /root/.ssh/authorized_keys root@$name$i:/root `
+ `ssh root@$name$i echo "alias ssh='ssh -i /root/.ssh/migrate' >>/root/.bashrc"`
 done
