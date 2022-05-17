@@ -82,13 +82,18 @@ systemctl restart chronyd
 hostnamectl set-hostname $(cat /root/namehost)
 sed -i '/^server/d'  /etc/chrony.conf
 sed -i '1s/^/server '$(cat /root/ntp)' iburst\n/g' /etc/chrony.conf
+nmcli con up bond0
+nmcli con up bond1
+nmcli con up br0
+
 str="$(cat /root/ip4)	$(cat /root/namehost).localdomain	$(cat /root/namehost)"
 ssh $(cat /root/mds_ipmaster) "echo '$str' >> /etc/hosts"
-
+iso_t=`cat /etc/fstab|grep r-virt|wc -l`
+if [$iso_t -lt 1 ];then
 find /etc/yum.repos.d/ -type f -exec sed -i "s/enabled=1/enabled=0/g" {} \;
 echo -e "[local]\nname=Local Yum Repo\nbaseurl=file:///media/flash/\nenabled=1\ngpgcheck=0" >> /etc/yum.repos.d/local-repo.repo
 mkdir /media/flash/
 echo '/root/r-virt.iso /media/flash iso9660 noexec,nosuid,nodev,loop     0 0' >> /etc/fstab
 
-
+fi
 echo "Edit file /root/ssh-keygen (count nodes) and run on first node!"
