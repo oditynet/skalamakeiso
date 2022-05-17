@@ -89,7 +89,7 @@ nmcli con up br0
 str="$(cat /root/ip4)	$(cat /root/namehost).localdomain	$(cat /root/namehost)"
 ssh $(cat /root/mds_ipmaster) "echo '$str' >> /etc/hosts"
 iso_t=`cat /etc/fstab|grep r-virt|wc -l`
-if [$iso_t -lt 1 ];then
+if [ $iso_t -lt 1 ];then
 find /etc/yum.repos.d/ -type f -exec sed -i "s/enabled=1/enabled=0/g" {} \;
 echo -e "[local]\nname=Local Yum Repo\nbaseurl=file:///media/flash/\nenabled=1\ngpgcheck=0" >> /etc/yum.repos.d/local-repo.repo
 mkdir /media/flash/
